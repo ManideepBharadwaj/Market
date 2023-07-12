@@ -1,0 +1,14 @@
+from statsmodels.graphics.mosaicplot import mosaic
+from itertools import product
+crosstab =pd.crosstab(df['cluster_num'],df['Like'])
+crosstab = crosstab[['-5','-4','-3','-2','-1','0','+1','+2','+3','+4','+5']]
+print(crosstab)
+plt.rcParams['figure.figsize'] = (7,5)
+mosaic(crosstab.stack())
+plt.show()
+crosstab_gender =pd.crosstab(df['cluster_num'],df['Gender'])
+print(crosstab_gender)
+plt.rcParams['figure.figsize'] = (7,5)
+mosaic(crosstab_gender.stack())
+plt.show()
+sns.boxplot(x="cluster_num", y="Age", data=df)
